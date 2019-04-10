@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Ecommerce.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ecommerce.Controllers
 {
@@ -22,6 +23,7 @@ namespace Ecommerce.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
@@ -29,6 +31,7 @@ namespace Ecommerce.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Customer")]
         public IActionResult Privacy()
         {
             return View();
